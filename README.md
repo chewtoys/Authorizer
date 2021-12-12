@@ -1,37 +1,24 @@
-# Express TypeScript template
+# Authorizer
 
-# Pre-reqs
+![Forward Auth diagram](./docs/assets/authforward.png)
 
-- Install [Node.js](https://nodejs.org/en/)
-- Install [VS Code](https://code.visualstudio.com/)
+Authorizer allows authorisation decisions to be made at the level of a Traefik Auth Middleware. 
 
-# Getting started
+It works in conjunction with https://github.com/catalystgammaltd/fwd-auth-node which provides authentication, but is designed to run as a stand-alone authorizer. 
 
-- Clone the repository
+It requires a postgresql connection to store user and role access control information.
 
-```
-git clone https://github.com/greenroach/express-ts-template.git
-```
+## Rationale
 
-- Install dependencies
+Whilst Kubernetes alone could be used for authentication, with its rich RBAC interface, this is a bad fit to a lot of use cases, and would mingle infrastructure level RBAC information with application level RBAC. Keeping the two layers distinct provides greater flexibility and control for the application layer, whilst reducing risk for the infrastructure layer, as it minimises the surface that has to be exposed to first party users.
 
-```
-cd <project_name>
-npm install
-```
+## Rough Architecture
 
-- Build and run the project
-
-```
-npm run build
-npm start
-```
-
-Navigate to `http://localhost:3000`
+Client HTTP requests are evaluated against a set of rules. If the request matches the rule, the response will be in the 2xx range, and in the 4xx or 5xx otherwise. Any request outside of teh 2xx range should be considered failed with respect to authorization.
 
 # Provide Github Actions secrets
 
-The Github actions will require the following secrets:
+In order to build this service as a docker image via Github Actions you will need to provide the following secrets:
 
 - `IMAGE_NAME` - The repository/image name to build and upload
 - `DOCKERHUB_USERNAME` - Your Docker Hub username

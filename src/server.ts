@@ -1,10 +1,9 @@
-import { createLightship } from "lightship";
 import { Command, Option } from "commander";
+import { Boilerplate } from "./application";
+import { UserDataAuthorizer } from "./authorization";
+import rules from "./rules";
 
-import metrics from "./metrics";
-import { withLightship } from "./apputils";
-import Boilerplate from "./application";
-import { Request, Response } from "express";
+const boilerplate = new Boilerplate();
 
 /**
  * Set up CLI options and config.
@@ -37,13 +36,14 @@ program
 
 program.parse(process.argv);
 const config = program.opts();
-
-const boilerplate = new Boilerplate();
-
 const app = boilerplate.prepare(config);
 
-app.get("/", (req: Request, res: Response) => {
-    res.status(200).render("index", { title: "Express" });
-});
+app.use('*', UserDataAuthorizer({
+    showFailures: true,
+    connection:{},
+    ruleset:[
+        rules.deny,
+    ],
+}));
 
 boilerplate.launch();
