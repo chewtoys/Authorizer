@@ -34,7 +34,13 @@ This will output a base64 encoded key pair to the console. These can then be pro
 
 Client HTTP requests are evaluated against a set of rules. If the request matches the rule, the response will be in the 2xx range, and in the 4xx or 5xx otherwise. Any request outside of teh 2xx range should be considered failed with respect to authorization.
 
-# Provide Github Actions secrets
+## Future Roadmap
+
+Use [OPA](https://www.openpolicyagent.org/) and Rego through the [npm-opa-wasm](https://github.com/open-policy-agent/npm-opa-wasm) module to provide policies as config and dynamically reconfigure the authorizer when the config files change using [Chokidar]https://github.com/paulmillr/chokidar).
+
+
+
+## Provide Github Actions secrets
 
 In order to build this service as a docker image via Github Actions you will need to provide the following secrets:
 
