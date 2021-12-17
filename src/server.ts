@@ -102,7 +102,7 @@ app.use('*', UserDataAuthorizer({
         port: config.pgPort,
     },
     ruleset:[
-        rules.deny,
+        rules.Deny,
         // rules.AllowOnly(""),
     ],
 }));

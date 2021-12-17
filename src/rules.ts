@@ -4,7 +4,7 @@ import { UserData } from "./users";
 
 export type Rule = (r: AuthzRequest, d: UserData) => AuthzResult;
 
-function deny():AuthzResult{
+function Deny():AuthzResult{
     return { 
         details: "Deny all", 
         allow: false, 
@@ -29,6 +29,6 @@ function AllowOnly(...subscribers: string[]): Rule{
 
 
 export default {
-    deny, 
+    Deny, 
     AllowOnly, 
 };
