@@ -79,7 +79,7 @@ program
             "--private-signing-key-base64",
             "The PRIVATE key for message signing in base64 format",
         )
-        .env('SIGNING_KEY_PRIVATE')
+        .env('SIGNING_SECRET_KEY')
         .makeOptionMandatory(),
     );
 
