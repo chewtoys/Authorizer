@@ -2,8 +2,6 @@ import * as path from "path";
 import { OptionValues } from "commander";
 import express, {
     Application,
-    ErrorRequestHandler,
-    RequestHandler,
 } from "express";
 import logger from "morgan";
 
@@ -11,6 +9,7 @@ import { errorHandler, errorNotFoundHandler } from "./middlewares/errorHandler";
 import metrics from "./metrics";
 import { createLightship, Lightship } from "lightship";
 import { withLightship } from "./apputils";
+import helmet from "helmet";
 
 export class Boilerplate {
     config: any;
@@ -25,6 +24,7 @@ export class Boilerplate {
         this.telemetry = metrics.app();
 
         this.app = express();
+        this.app.use(helmet());
         this.app.set("views", path.join(__dirname, "../views")); // Use views
         this.app.set("view engine", "pug"); // Use Pug
 
