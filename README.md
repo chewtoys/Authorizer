@@ -36,8 +36,9 @@ Client HTTP requests are evaluated against a set of rules. If the request matche
 
 ## Future Roadmap
 
-Use [OPA](https://www.openpolicyagent.org/) and Rego through the [npm-opa-wasm](https://github.com/open-policy-agent/npm-opa-wasm) module to provide policies as config and dynamically reconfigure the authorizer when the config files change using [Chokidar]https://github.com/paulmillr/chokidar).
+1. Use [OPA](https://www.openpolicyagent.org/) and Rego through the [npm-opa-wasm](https://github.com/open-policy-agent/npm-opa-wasm) module to provide policies as config and dynamically reconfigure the authorizer when the config files change using [Chokidar]https://github.com/paulmillr/chokidar).
 
+2. Retrieve user data from DB using [`pg`](https://node-postgres.com/) and inject user data object into the authorisation rules.
 
 
 ## Provide Github Actions secrets
