@@ -101,8 +101,8 @@ app.use(
             port: config.pgPort,
         },
         ruleset: [
-            rules.Deny,
-            // rules.AllowOnly(""),
+            // rules.Deny,
+            rules.AllowOnly("auth0|61b0a3dfe25b8f007197ac9f"),
         ],
     }),
 );
