@@ -1,9 +1,7 @@
 import * as path from "path";
 import { OptionValues } from "commander";
-import express, {
-    Application,
-} from "express";
-import logger from "morgan";
+import express, { Application } from "express";
+import logger, { Options } from "morgan";
 
 import { errorHandler, errorNotFoundHandler } from "./middlewares/errorHandler";
 import metrics from "./metrics";
@@ -12,12 +10,13 @@ import { withLightship } from "./apputils";
 import helmet from "helmet";
 
 export class Boilerplate {
-    config: any;
+    config: OptionValues;
     app: Application;
     telemetry: Application;
     lightship: Lightship;
 
     prepare(config: OptionValues): Application {
+        this.config = config;
         this.lightship = createLightship({
             port: config.probesPort,
         });

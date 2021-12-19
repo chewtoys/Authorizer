@@ -1,24 +1,23 @@
 import { AuthzRequest, AuthzResult, getIdentityFor } from "./authorization";
 import { UserData } from "./users";
 
-
 export type Rule = (r: AuthzRequest, d: UserData) => AuthzResult;
 
-function Deny():AuthzResult{
-    return { 
-        details: "Deny all", 
-        allow: false, 
+function Deny(): AuthzResult {
+    return {
+        details: "Deny all",
+        allow: false,
     };
 }
 
-function AllowOnly(...subscribers: string[]): Rule{
-    return (r:AuthzRequest, d:UserData): AuthzResult => {
-        if(subscribers.includes(getIdentityFor(r).guid)){
+function AllowOnly(...subscribers: string[]): Rule {
+    return (r: AuthzRequest, d: UserData): AuthzResult => {
+        if (subscribers.includes(getIdentityFor(r).guid)) {
             return {
                 details: "User authorized by AllowOnly rule",
                 allow: true,
             };
-        }else{
+        } else {
             return {
                 details: "User not authorized by AllowOnly rule",
                 allow: false,
@@ -27,8 +26,7 @@ function AllowOnly(...subscribers: string[]): Rule{
     };
 }
 
-
 export default {
-    Deny, 
-    AllowOnly, 
+    Deny,
+    AllowOnly,
 };

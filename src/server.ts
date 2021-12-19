@@ -38,73 +38,73 @@ program
             "--pg-user <username>",
             "The postgresql username to connect with",
         )
-        .env('PG_USER')
-        .makeOptionMandatory(),
+            .env("PG_USER")
+            .makeOptionMandatory(),
     )
     .addOption(
-        new Option(
-            "--pg-host <hostname>",
-            "The postgresql host to connect to",
-        )
-        .env('PG_HOST')
-        .makeOptionMandatory(),
+        new Option("--pg-host <hostname>", "The postgresql host to connect to")
+            .env("PG_HOST")
+            .makeOptionMandatory(),
     )
     .addOption(
         new Option(
             "--pg-password <password>",
             "The postgresql password to connect with",
         )
-        .env('PG_PASSWORD')
-        .makeOptionMandatory(),
+            .env("PG_PASSWORD")
+            .makeOptionMandatory(),
     )
     .addOption(
         new Option(
             "--pg-database <database>",
             "The postgresql database to connect to",
         )
-        .env('PG_DATABASE')
-        .makeOptionMandatory(),
+            .env("PG_DATABASE")
+            .makeOptionMandatory(),
+    )
+    .addOption(
+        new Option("--pg-port <port>", "The postgresql host port to connect to")
+            .env("PG_PORT")
+            .default(5432)
+            .makeOptionMandatory(),
     )
     .addOption(
         new Option(
-            "--pg-port <port>",
-            "The postgresql host port to connect to",
-        )
-        .env('PG_PORT')
-        .default(5432)
-        .makeOptionMandatory(),
-    )
-    .addOption(
-        new Option(
-            "--private-signing-key-base64",
+            "--private-signing-key-base64 <key>",
             "The PRIVATE key for message signing in base64 format",
         )
-        .env('SIGNING_SECRET_KEY')
-        .makeOptionMandatory(),
+            .env("SIGNING_SECRET_KEY")
+            .makeOptionMandatory(),
     );
-
 
 program.parse(process.argv);
 const config = program.opts();
 const app = boilerplate.prepare(config);
 
+app.get("/favicon.ico", (req, res) => {
+    res.status(404).send("Not found");
+});
 
-app.get('/favicon.ico', (req, res) => { res.status(404).send('Not found'); });
-
-app.use('*', UserDataAuthorizer({
-    showFailures: true,
-    privateSigningKey: Buffer.from(config.privateSigningKeyBase64, 'base64'),
-    connection:{
-        username: config.pgUser,
-        password: config.pgPassword,
-        host: config.pgHost,
-        db: config.pgDatabase,
-        port: config.pgPort,
-    },
-    ruleset:[
-        rules.Deny,
-        // rules.AllowOnly(""),
-    ],
-}));
+app.use(
+    "*",
+    UserDataAuthorizer({
+        showFailures: true,
+        privateSigningKey: Buffer.from(
+            config.privateSigningKeyBase64,
+            "base64",
+        ),
+        connection: {
+            username: config.pgUser,
+            password: config.pgPassword,
+            host: config.pgHost,
+            db: config.pgDatabase,
+            port: config.pgPort,
+        },
+        ruleset: [
+            rules.Deny,
+            // rules.AllowOnly(""),
+        ],
+    }),
+);
 
 boilerplate.launch();
