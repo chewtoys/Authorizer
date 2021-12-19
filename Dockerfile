@@ -16,4 +16,4 @@ COPY --from=build-deps /build/dist ./dist
 
 
 EXPOSE 3000
-ENTRYPOINT [ "node", "dist/src/server.js" ]
+ENTRYPOINT [ "npm", "run", "start" ]
