@@ -28,7 +28,7 @@
         "express": "^4.16.2",
         "express-prometheus-middleware": "^1.2.0",
         "helmet": "^5.0.0",
-        "http-errors": "^1.7.1",
+        "http-errors": "^2.0.0",
         "lightship": "^6.7.2",
         "morgan": "^1.9.1",
         "pg": "^8.7.1",
