@@ -29,7 +29,7 @@
         "express-prometheus-middleware": "^1.2.0",
         "helmet": "^5.0.0",
         "http-errors": "^2.0.0",
-        "lightship": "^6.7.2",
+        "lightship": "^7.0.0",
         "morgan": "^1.9.1",
         "pg": "^8.7.1",
         "prom-client": "14",
