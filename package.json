@@ -43,7 +43,7 @@
         "@types/http-errors": "1.8.2",
         "@types/jest": "28.1.8",
         "@types/morgan": "1.9.5",
-        "@types/node": "16.18.48",
+        "@types/node": "16.18.50",
         "@types/pg": "8.10.2",
         "@types/supertest": "2.0.12",
         "@typescript-eslint/eslint-plugin": "5.59.5",
