@@ -914,10 +914,10 @@
   resolved "https://registry.yarnpkg.com/@types/node/-/node-16.18.59.tgz#4cdbd631be6d9be266a96fb17b5d0d7ad6bbe26c"
   integrity sha512-PJ1w2cNeKUEdey4LiPra0ZuxZFOGvetswE8qHRriV/sUkL5Al4tTmPV9D2+Y/TPIxTHHgxTfRjZVKWhPw/ORhQ==
 
-"@types/pg@8.10.6":
-  version "8.10.6"
-  resolved "https://registry.yarnpkg.com/@types/pg/-/pg-8.10.6.tgz#6a861cf3371fcce04ee30ce4ab87e9635a8a249b"
-  integrity sha512-L9VOuJzQJJAMjk+QZ3GA0gIdFxyWKMlw7rDh94LEibY0w7YmNNlM0wl9JUCsmr691YX6DYV18UfCmU1waYfxIw==
+"@types/pg@8.10.7":
+  version "8.10.7"
+  resolved "https://registry.yarnpkg.com/@types/pg/-/pg-8.10.7.tgz#2f172598272e581e72cba640026e5152b5a3d5c3"
+  integrity sha512-ksJqHipwYaSEHz9e1fr6H6erjoEdNNaOxwyJgPx9bNeaqOW3iWBQgVHfpwiSAoqGzchfc+ZyRLwEfeCcyYD3uQ==
   dependencies:
     "@types/node" "*"
     pg-protocol "*"
