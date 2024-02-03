@@ -42,7 +42,7 @@
         "@types/express-prometheus-middleware": "1.2.3",
         "@types/http-errors": "1.8.2",
         "@types/jest": "28.1.8",
-        "@types/morgan": "1.9.7",
+        "@types/morgan": "1.9.9",
         "@types/node": "16.18.59",
         "@types/pg": "8.10.7",
         "@types/supertest": "2.0.15",
